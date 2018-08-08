@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='http://localhost:8000/socket.io/socket.io.js'></script>
+
+</head>
+<body>
+    <button id="button">123</button>
+
+    <script>
+            var socket = io('http://localhost:8000/')
+    
+           var button = document.getElementById('button');
+           button.onclick = function(){
+                socket.emit('ww',{'chen':'666'})
+            }
+            socket.on('aa', (data) => {
+                console.log(data)
+            })
+        </script>
+</body>
+</html>
