@@ -19,7 +19,7 @@ io.on('connection', (socket) => {
         console.log(data)
 
         // socket.emit('aa','我是服务器的数据')  /* 谁发给我，我回给谁 */
-        // io.emit('aa','都有') /* 不管谁发我，我都告诉所有人 */
+        io.emit('aa','都有') /* 不管谁发我，我都告诉所有人 */
     })
 
 })
