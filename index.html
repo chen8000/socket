@@ -16,8 +16,12 @@
     
            var button = document.getElementById('button');
            button.onclick = function(){
+
+               // 向服务器发送数据
                 socket.emit('ww',{'chen':'666'})
             }
+            
+            // 监听服务器推送来的数据
             socket.on('aa', (data) => {
                 console.log(data)
             })
