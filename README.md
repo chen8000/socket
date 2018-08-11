@@ -37,6 +37,7 @@
 
 ## 多人
 
+
 客户端发布
 * socket.emit('msg', {data})
 
@@ -67,6 +68,22 @@ io.to(roomid).emit('msgg', {data})<br/>
 
 通知所有人不包括自己<br/>
 socket.broadcast.to(roomid).emit('msgg', {data})
+
+
+Koa中使用socket
+1. 安装
+	npm i -S koa-socket
+2. 引入
+	const IO = require('koa-socket')
+3. 实例IO
+	const io = new IO()
+4. 配置
+	io.attach(app)
+
+5. 连接 【app._io === io】
+	app._io.on('connection', socket => {
+		console.log(建立连接)
+	})
 
 
 
