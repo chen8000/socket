@@ -39,8 +39,6 @@ app._io.on('connection', socket => {
 
         socket.emit('touser', '我是服务器端的数据')
     }) 
-
-    
 })
 
 //启动路由
