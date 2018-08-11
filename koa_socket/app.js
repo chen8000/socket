@@ -9,8 +9,11 @@ const Koa = require('koa');
 const router = require('koa-router')();
 const render = require('koa-art-template');
 const path = require('path');
+const IO = require('koa-socket')    
+const io = new IO()
 
 const app = new Koa();
+io.attach(app)
 
 //配置 koa-art-template
 render(app, {
@@ -24,10 +27,21 @@ render(app, {
 
 
 router.get('/', async (ctx) => {
-
     ctx.render('index')
 });
 
+
+app._io.on('connection', socket => { 
+    console.log('建立连接') 
+
+    socket.on('toserver', data => {
+        console.log(data)
+
+        socket.emit('touser', '我是服务器端的数据')
+    }) 
+
+    
+})
 
 //启动路由
 app

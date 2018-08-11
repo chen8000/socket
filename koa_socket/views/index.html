@@ -5,8 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="http://localhost:8000/socket.io/socket.io.js"></script>
 </head>
 <body>
-    哈哈哈
+    <button id="btn">点击</button>
+
+    <script>
+        var socket = io('http://localhost:8000')
+        document.getElementById('btn').onclick = function(){
+            socket.emit('toserver', '我是客户端数据')
+        }
+
+        socket.on('touser', data => {
+            console.log(data)
+        })
+    </script>
 </body>
 </html>
