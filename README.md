@@ -80,9 +80,9 @@ socket.broadcast.to(roomid).emit('msgg', {data})
 4. 配置
 	io.attach(app)
 
-5. 连接 【app._io === io】
-	app._io.on('connection', socket => {
-		console.log(建立连接)
+5. 连接 【app._io === io】<br/>
+	app._io.on('connection', socket => { <br/>
+		console.log(建立连接) <br/>
 	})
 
 
