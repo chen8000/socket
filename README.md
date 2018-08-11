@@ -70,7 +70,7 @@ io.to(roomid).emit('msgg', {data})<br/>
 socket.broadcast.to(roomid).emit('msgg', {data})
 
 
-Koa中使用socket
+## Koa中使用socket
 1. 安装
 	npm i -S koa-socket
 2. 引入
