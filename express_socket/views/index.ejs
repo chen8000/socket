@@ -9,18 +9,48 @@
     
 </head>
 <body>
+    <ul>
+        
+    </ul>
     
     <input type="text">
     <br/>
-    <button>发送</button>
+    <button class="go">发送</button>
+    <button class="goAll">群发</button>
     <script src='http://localhost:8000/socket.io/socket.io.js'></script>
     <script>
         const socket = io.connect('http://localhost:8000');
 
-socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
-  });
+        
+
+        socket.on('news', function (data) {
+            
+            socket.emit('my other event', { my: 'data' });
+        });
+
+        // 点击获取文本框输入的内容，向服务器推送
+        $('.go').click(function(){
+            console.log('go')
+            var val = $('input').val();
+
+            socket.emit('to', { val })
+        })
+
+        // 群发
+        $('.goAll').click(function(){
+            var val = $('input').val();
+
+            socket.emit('toAll', { val })
+        })
+
+        // 监听服务器推送的数据 
+        socket.on('go', (data) => {
+            console.log(data.val)
+
+            var li = `<li>${data.val}</li>`
+
+            $('ul').append(li)
+        })
     </script>
 </body>
 </html>
